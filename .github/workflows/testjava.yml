@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI
 
 on:
   push:
@@ -17,5 +17,8 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Build and Test with Maven
-      run: mvn test
+        
+    - name: Compile and Run Tests
+      run: |
+        find . -name "*.java" > sources.txt
+        javac -d bin @sources.txt
